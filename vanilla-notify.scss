@@ -1,0 +1,58 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin opacity($value){
+  $IEValue: $value*100;
+  opacity: $value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
+  filter: alpha(opacity=$IEValue);
+}
+
+.notify-container {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.notify-item {
+  width: 20em;
+  padding: 10px;
+  @include border-radius(5px);
+  margin-bottom: 15px;
+  @include opacity(0.8);
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.notify {
+  &-info {
+    background: blue;
+    color: #fff;
+  }
+
+  &-success {
+    background: green;
+    color: #fff;
+  }
+
+  &-error {
+    background: red;
+    color: #fff;
+  }
+
+  &-warning {
+    background: yellow;
+    color: #fff;
+  }
+
+  &-notify {
+    background: black;
+    color: #fff;
+  }
+}
