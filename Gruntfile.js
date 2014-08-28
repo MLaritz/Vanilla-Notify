@@ -43,7 +43,7 @@ module.exports = function(grunt) {
     compass: {
       dist: {
         options: {
-          sassDir: '',
+          sassDir: 'styles/',
           cssDir: '<%= distFolder %>/styles/',
           environment: 'production'
         }
@@ -65,7 +65,7 @@ module.exports = function(grunt) {
         }
       },
       styles: {
-        files: '*.scss',
+        files: 'styles/*.scss',
         tasks: 'compass',
         options: {
           spawn: false

@@ -1,3 +1,12 @@
+
+$info-background: #3498db !default;
+$success-background: #2ecc71 !default;
+$error-background: #e74c3c !default;
+$warning-background: #f39c12 !default;
+$notify-background: #333 !default;
+
+$border-radius: 5px !default;
+
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;
@@ -12,16 +21,16 @@
   filter: alpha(opacity=$IEValue);
 }
 
-.notify-container {
+.v-notify-container {
   position: absolute;
   right: 10px;
   top: 10px;
 }
 
-.notify-item {
+.v-notify-item {
   width: 20em;
-  padding: 10px;
-  @include border-radius(5px);
+  padding: 15px;
+  @include border-radius($border-radius);
   margin-bottom: 15px;
   @include opacity(0.8);
 
@@ -30,29 +39,34 @@
   }
 }
 
-.notify {
+.vnotify-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.v-notify {
   &-info {
-    background: blue;
+    background: $info-background;
     color: #fff;
   }
 
   &-success {
-    background: green;
+    background: $success-background;
     color: #fff;
   }
 
   &-error {
-    background: red;
+    background: $error-background;
     color: #fff;
   }
 
   &-warning {
-    background: yellow;
+    background: $warning-background;
     color: #fff;
   }
 
   &-notify {
-    background: black;
+    background: $notify-background;
     color: #fff;
   }
 }

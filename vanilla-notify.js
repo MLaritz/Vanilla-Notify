@@ -1,54 +1,81 @@
-var notify = (function() {
+var vNotify = (function() {
 
-  var info = function(text) {
-    return addNotify('notify-info', text);
+  var info = function(text, title) {
+    return addNotify('v-notify-info', text, title);
   };
 
-  var success = function(text) {
-    return addNotify('notify-success', text);
+  var success = function(text, title) {
+    return addNotify('v-notify-success', text, title);
   };
 
-  var error = function(text) {
-    return addNotify('notify-error', text);
+  var error = function(text, title) {
+    return addNotify('v-notify-error', text, title);
   };
 
-  var warning = function(text) {
-    return addNotify('notify-warning', text);
+  var warning = function(text, title) {
+    return addNotify('v-notify-warning', text, title);
   };
 
-  var notify = function(text) {
-    return addNotify('notify-notify', text);
+  var notify = function(text, title) {
+    return addNotify('v-notify-notify', text, title);
   };
 
-  var addNotify = function(className, text) {
+  var addNotify = function(className, text, title) {
     var container = getNotifyContainer();
 
     var frag = document.createDocumentFragment();
 
     var item = document.createElement('div');
-    item.classList.add('notify-item');
+    item.classList.add('v-notify-item');
     item.classList.add(className);
-    item.innerHTML = text;
     item.style.opacity = 0;
 
-    frag.appendChild(item);
-
-    container.appendChild(frag);
+    if (title) {
+        item.appendChild(addTitle(title));
+    }
+    item.appendChild(addText(text));
 
     var hideNotify = function() {
       fadeOut(item);
     };
 
+    var resetInterval = function() {
+      clearTimeout(item.interval);
+    };
+
+    var hideTimeout = function () {
+      item.interval = setTimeout(hideNotify, 5000);
+    };
+
+    frag.appendChild(item);
+    container.appendChild(frag);
+
+    item.addEventListener("mouseover", resetInterval);
+    item.addEventListener("mouseout", hideTimeout);
+
     fadeIn(item);
+    hideTimeout();
 
-    interval = setTimeout(hideNotify, 5000);
+    return item;
+  };
 
+  var addText = function(text) {
+    var item = document.createElement('div');
+    item.classList.add('vnotify-text');
+    item.innerHTML = text;
+    return item;
+  };
+
+  var addTitle = function(title) {
+    var item = document.createElement('div');
+    item.classList.add('vnotify-title');
+    item.innerHTML = title;
     return item;
   };
 
   var getNotifyContainer = function() {
 
-    var container = document.querySelector('.notify-container');
+    var container = document.querySelector('.v-notify-container');
 
     if (container) {
       return container;
@@ -60,7 +87,7 @@ var notify = (function() {
   var createNotifyContainer = function() {
     var frag = document.createDocumentFragment();
     container = document.createElement('div');
-    container.classList.add('notify-container');
+    container.classList.add('v-notify-container');
 
     frag.appendChild(container);
     document.body.appendChild(frag);
