@@ -1,23 +1,23 @@
 var vNotify = (function() {
 
   var info = function(text, title) {
-    return addNotify('v-notify-info', text, title);
+    return addNotify('vnotify-info', text, title);
   };
 
   var success = function(text, title) {
-    return addNotify('v-notify-success', text, title);
+    return addNotify('vnotify-success', text, title);
   };
 
   var error = function(text, title) {
-    return addNotify('v-notify-error', text, title);
+    return addNotify('vnotify-error', text, title);
   };
 
   var warning = function(text, title) {
-    return addNotify('v-notify-warning', text, title);
+    return addNotify('vnotify-warning', text, title);
   };
 
   var notify = function(text, title) {
-    return addNotify('v-notify-notify', text, title);
+    return addNotify('vnotify-notify', text, title);
   };
 
   var addNotify = function(className, text, title) {
@@ -26,7 +26,7 @@ var vNotify = (function() {
     var frag = document.createDocumentFragment();
 
     var item = document.createElement('div');
-    item.classList.add('v-notify-item');
+    item.classList.add('vnotify-item');
     item.classList.add(className);
     item.style.opacity = 0;
 
@@ -35,16 +35,21 @@ var vNotify = (function() {
     }
     item.appendChild(addText(text));
 
+    item.fadeDuration = 5000; //option
+
     var hideNotify = function() {
-      fadeOut(item);
+      item.fadeInterval = fade('out', 2000, item);
     };
 
     var resetInterval = function() {
       clearTimeout(item.interval);
+      clearTimeout(item.fadeInterval);
+      item.style.opacity = 1;
+      item.fadeDuration = 500;
     };
 
     var hideTimeout = function () {
-      item.interval = setTimeout(hideNotify, 5000);
+      item.interval = setTimeout(hideNotify, item.fadeDuration);
     };
 
     frag.appendChild(item);
@@ -53,7 +58,7 @@ var vNotify = (function() {
     item.addEventListener("mouseover", resetInterval);
     item.addEventListener("mouseout", hideTimeout);
 
-    fadeIn(item);
+    fade('in', 2000, item);
     hideTimeout();
 
     return item;
@@ -74,20 +79,15 @@ var vNotify = (function() {
   };
 
   var getNotifyContainer = function() {
-
-    var container = document.querySelector('.v-notify-container');
-
-    if (container) {
-      return container;
-    }
-
-    return createNotifyContainer();
+    var container = document.querySelector('.vnotify-container');
+    return container ? container : createNotifyContainer();
   };
 
   var createNotifyContainer = function() {
     var frag = document.createDocumentFragment();
     container = document.createElement('div');
-    container.classList.add('v-notify-container');
+    container.classList.add('vnotify-container');
+    container.setAttribute('role', 'alert');
 
     frag.appendChild(container);
     document.body.appendChild(frag);
@@ -95,58 +95,44 @@ var vNotify = (function() {
     return container;
   };
 
+  //New fade - based on http://toddmotto.com/raw-javascript-jquery-style-fadein-fadeout-functions-hugo-giraudel/
+  var fade = function(type, ms, el) {
+    var isIn = type === 'in',
+      opacity = isIn ? 0 : el.style.opacity,
+      goal = isIn ? 0.8 : 0,
+      interval = 50,
+      gap = interval / ms;
 
-  /* Animations - Fade In and Out */
-  /* Borrowed from this JsFiddle - http://jsfiddle.net/gabrieleromanato/cMp7s/ */
-  var animate = function(options) {
-        var start = new Date();
-        var id = setInterval(function() {
-            var timePassed = new Date() - start;
-            var progress = timePassed / options.duration;
-            if (progress > 1) {
-                progress = 1;
-            }
-            options.progress = progress;
-            var delta = options.delta(progress);
-            options.step(delta);
-            if (progress === 1) {
-                clearInterval(id);
-                if (options.complete){
-                  options.complete();
-                }
-            }
-        }, options.delay || 10);
-    };
-    var fadeOut = function(element) {
-        var to = 1;
-        animate({
-            duration: 2000,
-            delta: function(progress) {
-                progress = this.progress;
-                return 0.5 - Math.cos(progress * Math.PI) / 2;
-            },
-            complete: function () {
-              element.style.display = 'none';
-              element.outerHTML = '';
-            },
-            step: function(delta) {
-                element.style.opacity = to - delta;
-            }
-        });
-    };
-    var fadeIn = function(element) {
-        var to = 0;
-        animate({
-            duration: 2000,
-            delta: function(progress) {
-                progress = this.progress;
-                return 0.5 - Math.cos(progress * Math.PI) / 2;
-            },
-            step: function(delta) {
-                element.style.opacity = to + delta;
-            }
-        });
-    };
+    if(isIn) {
+      el.style.display = 'block';
+      el.style.opacity = opacity;
+    }
+
+    function func() {
+      opacity = isIn ? opacity + gap : opacity - gap;
+      el.style.opacity = opacity;
+
+      if(opacity <= 0) {
+        el.style.display = 'none';
+        el.outerHTML = '';
+        checkRemoveContainer();
+      }
+      if((!isIn && opacity <= goal) || (isIn && opacity >= goal)) {
+        window.clearInterval(fading);
+      }
+    }
+
+    var fading = window.setInterval(func, interval);
+    return fading;
+  };
+
+  var checkRemoveContainer = function() {
+    var container = document.querySelector('.vnotify-container');
+    if (container) {
+      container.outerHTML = '';
+      container = null;
+    }
+  };
 
   return {
     info: info,

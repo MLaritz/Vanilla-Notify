@@ -5,6 +5,12 @@ $error-background: #e74c3c !default;
 $warning-background: #f39c12 !default;
 $notify-background: #333 !default;
 
+$info-color: #fff !default;
+$success-color: #fff !default;
+$error-color: #fff !default;
+$warning-color: #fff !default;
+$notify-color: #fff !default;
+
 $border-radius: 5px !default;
 
 @mixin border-radius($radius) {
@@ -21,13 +27,13 @@ $border-radius: 5px !default;
   filter: alpha(opacity=$IEValue);
 }
 
-.v-notify-container {
+.vnotify-container {
   position: absolute;
   right: 10px;
   top: 10px;
 }
 
-.v-notify-item {
+.vnotify-item {
   width: 20em;
   padding: 15px;
   @include border-radius($border-radius);
@@ -40,33 +46,32 @@ $border-radius: 5px !default;
 }
 
 .vnotify-title {
-  font-size: 1.1rem;
   font-weight: bold;
 }
 
-.v-notify {
+.vnotify {
   &-info {
     background: $info-background;
-    color: #fff;
+    color: $info-color;
   }
 
   &-success {
     background: $success-background;
-    color: #fff;
+    color: $success-color;
   }
 
   &-error {
     background: $error-background;
-    color: #fff;
+    color: $error-color;
   }
 
   &-warning {
     background: $warning-background;
-    color: #fff;
+    color: $warning-color;
   }
 
   &-notify {
     background: $notify-background;
-    color: #fff;
+    color: $notify-color;
   }
 }
