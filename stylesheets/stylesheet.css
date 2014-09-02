@@ -102,6 +102,23 @@ header h2 {
   margin-bottom: 40px;
 }
 
+button {
+	background-color: #d5000d;
+	border-radius: 3px;
+	border: none;
+	color: #fff;
+	display: inline-block;
+	font-size: inherit;
+	font-weight: bold;
+	padding: 7px 18px;
+	text-decoration: none;
+	background-clip: padding-box;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
 a.button {
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
