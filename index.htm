@@ -1,14 +1,25 @@
 <html>
   <head>
     <link rel="stylesheet" href="dist/styles/vanilla-notify.css" />
-    <script src="vanilla-notify.js"></script>
     <style>
       body {
         font-family: sans-serif;
       }
     </style>
+    <noscript>
+
+    </noscript>
   </head>
   <body>
 
+
+      <script src="vanilla-notify.js"></script>
+      <script>
+        vNotify.info('This is an info notification.', 'Info Notification.');
+        vNotify.success('This is a success notification.', 'Success Notification.');
+        vNotify.warning('This is a warning notification.', 'Warning Notification.');
+        vNotify.error('This is an error notification.', 'Error Notification.');
+        vNotify.notify('This is a notify notification.', 'Notify Notification.');
+      </script>
   </body>
 </html>

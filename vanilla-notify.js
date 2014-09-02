@@ -1,5 +1,13 @@
 var vNotify = (function() {
 
+  var options = {
+    fadeInDuration: 2000,
+    fadeOutDuration: 2000,
+    fadeInterval: 50,
+    visibleDuration: 5000,
+    postHoverVisibleDuration: 500
+  };
+
   var info = function(text, title) {
     return addNotify('vnotify-info', text, title);
   };
@@ -35,21 +43,21 @@ var vNotify = (function() {
     }
     item.appendChild(addText(text));
 
-    item.fadeDuration = 5000; //option
+    item.visibleDuration = options.visibleDuration; //option
 
     var hideNotify = function() {
-      item.fadeInterval = fade('out', 2000, item);
+      item.fadeInterval = fade('out', options.fadeOutDuration, item);
     };
 
     var resetInterval = function() {
       clearTimeout(item.interval);
       clearTimeout(item.fadeInterval);
-      item.style.opacity = 1;
-      item.fadeDuration = 500;
+      item.style.opacity = null;
+      item.visibleDuration = options.postHoverVisibleDuration;
     };
 
     var hideTimeout = function () {
-      item.interval = setTimeout(hideNotify, item.fadeDuration);
+      item.interval = setTimeout(hideNotify, item.visibleDuration);
     };
 
     frag.appendChild(item);
@@ -58,7 +66,7 @@ var vNotify = (function() {
     item.addEventListener("mouseover", resetInterval);
     item.addEventListener("mouseout", hideTimeout);
 
-    fade('in', 2000, item);
+    fade('in', options.fadeInDuration, item);
     hideTimeout();
 
     return item;
@@ -98,10 +106,9 @@ var vNotify = (function() {
   //New fade - based on http://toddmotto.com/raw-javascript-jquery-style-fadein-fadeout-functions-hugo-giraudel/
   var fade = function(type, ms, el) {
     var isIn = type === 'in',
-      opacity = isIn ? 0 : el.style.opacity,
+      opacity = isIn ? 0 : el.style.opacity || 1,
       goal = isIn ? 0.8 : 0,
-      interval = 50,
-      gap = interval / ms;
+      gap = options.fadeInterval / ms;
 
     if(isIn) {
       el.style.display = 'block';
@@ -122,13 +129,14 @@ var vNotify = (function() {
       }
     }
 
-    var fading = window.setInterval(func, interval);
+    var fading = window.setInterval(func, options.fadeInterval);
     return fading;
   };
 
   var checkRemoveContainer = function() {
-    var container = document.querySelector('.vnotify-container');
-    if (container) {
+    var item = document.querySelector('.vnotify-item');
+    if (!item) {
+      var container = document.querySelector('.vnotify-container');
       container.outerHTML = '';
       container = null;
     }
@@ -139,6 +147,7 @@ var vNotify = (function() {
     success: success,
     error: error,
     warning: warning,
-    notify: notify
+    notify: notify,
+    options: options
   };
 })();
