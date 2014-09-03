@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     uglify: {
       app: {
         src: 'vanilla-notify.js',
-        dest: '<%= distFolder %>/scripts/vanilla-notify.min.js'
+        dest: '<%= distFolder %>/vanilla-notify.min.js'
       }
     },
     jshint: {
@@ -43,10 +43,16 @@ module.exports = function(grunt) {
     compass: {
       dist: {
         options: {
-          sassDir: 'styles/',
-          cssDir: '<%= distFolder %>/styles/',
+          sassDir: '',
+          cssDir: '<%= distFolder %>/',
           environment: 'production'
         }
+      }
+    },
+    copy: {
+      main: {
+        src: 'vanilla-notify.scss',
+        dest: 'dist/_vanilla-notify.scss'
       }
     },
     watch: {
@@ -65,8 +71,8 @@ module.exports = function(grunt) {
         }
       },
       styles: {
-        files: 'styles/*.scss',
-        tasks: 'compass',
+        files: '*.scss',
+        tasks: ['compass', 'copy'],
         options: {
           spawn: false
         }
@@ -79,8 +85,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'compass', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'compass', 'copy', 'uglify']);
 
 };

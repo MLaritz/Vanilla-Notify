@@ -6,6 +6,14 @@ Notification Library built using Vanilla Javascript.  No jQuery or other depende
 ##Demo
 http://mlaritz.github.io/Vanilla-Notify/
 
+##Installation
+The JS and CSS files are required:
+```html
+<link rel="stylesheet" href="dist/vanilla-notify.css" />
+
+<script src="dist/vanilla-notify.js"></script>
+```
+
 ##Examples
 ```javascript
 //Info Notification
@@ -22,4 +30,15 @@ vNotify.error('text', 'title');
 
 //Notify Notification
 vNotify.notify('text', 'title');
+```
+
+##Options
+```javascript
+vNotify.options = {
+  fadeInDuration: 2000,
+  fadeOutDuration: 2000,
+  fadeInterval: 50,
+  visibleDuration: 5000,
+  postHoverVisibleDuration: 500
+};
 ```

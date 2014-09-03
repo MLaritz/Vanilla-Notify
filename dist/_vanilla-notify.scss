@@ -1,0 +1,77 @@
+
+$info-background: #3498db !default;
+$success-background: #2ecc71 !default;
+$error-background: #e74c3c !default;
+$warning-background: #f39c12 !default;
+$notify-background: #333 !default;
+
+$info-color: #fff !default;
+$success-color: #fff !default;
+$error-color: #fff !default;
+$warning-color: #fff !default;
+$notify-color: #fff !default;
+
+$border-radius: 5px !default;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin opacity($value){
+  $IEValue: $value*100;
+  opacity: $value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
+  filter: alpha(opacity=$IEValue);
+}
+
+.vnotify-container {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+}
+
+.vnotify-item {
+  width: 20em;
+  padding: 15px;
+  @include border-radius($border-radius);
+  margin-bottom: 15px;
+  @include opacity(0.8);
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.vnotify-title {
+  font-weight: bold;
+}
+
+.vnotify {
+  &-info {
+    background: $info-background;
+    color: $info-color;
+  }
+
+  &-success {
+    background: $success-background;
+    color: $success-color;
+  }
+
+  &-error {
+    background: $error-background;
+    color: $error-color;
+  }
+
+  &-warning {
+    background: $warning-background;
+    color: $warning-color;
+  }
+
+  &-notify {
+    background: $notify-background;
+    color: $notify-color;
+  }
+}
