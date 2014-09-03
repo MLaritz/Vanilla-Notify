@@ -102,16 +102,66 @@ header h2 {
 }
 
 button {
-	background-color: #d5000d;
+	background-color: #fff;
 	border-radius: 3px;
-	border: none;
-	color: #fff;
+	border: 2px solid #d5000d;
+	color: #d5000d;
 	display: inline-block;
 	font-size: inherit;
 	font-weight: bold;
 	padding: 7px 18px;
 	text-decoration: none;
 	background-clip: padding-box;
+}
+
+button#info-notify {
+	border-color: #3498db;
+	color: #3498db;
+}
+
+button#info-notify:hover {
+	background: #3498db;
+	color: #fff;
+}
+
+button#success-notify {
+	border-color: #2ecc71;
+	color: #2ecc71;
+}
+
+button#success-notify:hover {
+	background: #2ecc71;
+	color: #fff;
+}
+
+button#warning-notify {
+	border-color: #f39c12;
+	color: #f39c12;
+}
+
+button#warning-notify:hover {
+	background: #f39c12;
+	color: #fff;
+}
+
+button#error-notify {
+	border-color: #e74c3c;
+	color: #e74c3c;
+}
+
+button#error-notify:hover {
+	background: #e74c3c;
+	color: #fff;
+}
+
+button#notify-notify {
+	border-color: #333;
+	color: #333;
+}
+
+button#notify-notify:hover {
+	background: #333;
+	color: #fff;
 }
 
 button:hover {
@@ -311,7 +361,6 @@ blockquote {
 }
 
 ul li {
-  list-style: disc inside;
   padding-left: 20px;
 }
 
