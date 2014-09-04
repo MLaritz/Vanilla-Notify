@@ -1,44 +1,66 @@
 
-$info-background: #3498db !default;
-$success-background: #2ecc71 !default;
-$error-background: #e74c3c !default;
-$warning-background: #f39c12 !default;
-$notify-background: #333 !default;
+$vn-info-background: #3498db !default;
+$vn-success-background: #2ecc71 !default;
+$vn-error-background: #e74c3c !default;
+$vn-warning-background: #f39c12 !default;
+$vn-notify-background: #333 !default;
 
-$info-color: #fff !default;
-$success-color: #fff !default;
-$error-color: #fff !default;
-$warning-color: #fff !default;
-$notify-color: #fff !default;
+$vn-info-color: #fff !default;
+$vn-success-color: #fff !default;
+$vn-error-color: #fff !default;
+$vn-warning-color: #fff !default;
+$vn-notify-color: #fff !default;
 
-$border-radius: 5px !default;
+$vn-border-radius: 5px !default;
+$vn-container-top: 10px !default;
+$vn-container-bottom: 10px !default;
+$vn-container-left: 10px !default;
+$vn-container-right: 10px !default;
 
-@mixin border-radius($radius) {
+@mixin vn-border-radius($radius) {
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;
       -ms-border-radius: $radius;
           border-radius: $radius;
 }
 
-@mixin opacity($value){
-  $IEValue: $value*100;
-  opacity: $value;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
-  filter: alpha(opacity=$IEValue);
+@mixin vn-opacity($vn-value){
+  $vn-IEValue: $vn-value*100;
+  opacity: $vn-value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$vn-IEValue+")";
+  filter: alpha(opacity=$vn-IEValue);
 }
 
 .vnotify-container {
   position: fixed;
-  right: 10px;
-  top: 10px;
+
+  &.vn-top-right {
+    right: $vn-container-right;
+    top: $vn-container-top;
+  }
+
+  &.vn-top-left {
+    top: $vn-container-top;
+    left: $vn-container-left;
+  }
+
+  &.vn-bottom-right {
+    bottom: $vn-container-bottom;
+    right: $vn-container-right;
+  }
+
+  &.vn-bottom-left {
+    bottom: $vn-container-bottom;
+    left: $vn-container-left;
+  }
 }
 
 .vnotify-item {
   width: 20em;
   padding: 15px;
-  @include border-radius($border-radius);
+  @include vn-border-radius($vn-border-radius);
   margin-bottom: 15px;
-  @include opacity(0.8);
+  @include vn-opacity(0.8);
 
   &:hover {
     opacity: 1;
@@ -51,27 +73,27 @@ $border-radius: 5px !default;
 
 .vnotify {
   &-info {
-    background: $info-background;
-    color: $info-color;
+    background: $vn-info-background;
+    color: $vn-info-color;
   }
 
   &-success {
-    background: $success-background;
-    color: $success-color;
+    background: $vn-success-background;
+    color: $vn-success-color;
   }
 
   &-error {
-    background: $error-background;
-    color: $error-color;
+    background: $vn-error-background;
+    color: $vn-error-color;
   }
 
   &-warning {
-    background: $warning-background;
-    color: $warning-color;
+    background: $vn-warning-background;
+    color: $vn-warning-color;
   }
 
   &-notify {
-    background: $notify-background;
-    color: $notify-color;
+    background: $vn-notify-background;
+    color: $vn-notify-color;
   }
 }

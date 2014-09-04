@@ -1,11 +1,19 @@
 var vNotify = (function() {
 
+  var positionOption = {
+    topLeft: 'topLeft',
+    topRight: 'topRight',
+    bottomLeft: 'bottomLeft',
+    bottomRight: 'bottomRight'
+  };
+
   var options = {
     fadeInDuration: 2000,
     fadeOutDuration: 2000,
     fadeInterval: 50,
     visibleDuration: 5000,
-    postHoverVisibleDuration: 500
+    postHoverVisibleDuration: 500,
+    position: positionOption.topRight
   };
 
   var info = function(text, title) {
@@ -87,20 +95,35 @@ var vNotify = (function() {
   };
 
   var getNotifyContainer = function() {
-    var container = document.querySelector('.vnotify-container');
-    return container ? container : createNotifyContainer();
+    var positionClass = getPositionClass(options.position);
+    var container = document.querySelector('.' + positionClass);
+    return container ? container : createNotifyContainer(positionClass);
   };
 
-  var createNotifyContainer = function() {
+  var createNotifyContainer = function(positionClass) {
     var frag = document.createDocumentFragment();
     container = document.createElement('div');
     container.classList.add('vnotify-container');
+    container.classList.add(positionClass);
     container.setAttribute('role', 'alert');
 
     frag.appendChild(container);
     document.body.appendChild(frag);
 
     return container;
+  };
+
+  var getPositionClass = function(option) {
+    switch (option) {
+      case positionOption.topLeft:
+        return 'vn-top-left';
+      case positionOption.bottomRight:
+        return 'vn-bottom-right';
+      case positionOption.bottomLeft:
+        return 'vn-bottom-left';
+      default:
+        return 'vn-top-right';
+    }
   };
 
   //New fade - based on http://toddmotto.com/raw-javascript-jquery-style-fadein-fadeout-functions-hugo-giraudel/
@@ -136,9 +159,11 @@ var vNotify = (function() {
   var checkRemoveContainer = function() {
     var item = document.querySelector('.vnotify-item');
     if (!item) {
-      var container = document.querySelector('.vnotify-container');
-      container.outerHTML = '';
-      container = null;
+      var container = document.querySelectorAll('.vnotify-container');
+      for (var i=0; i< container.length; i++) {
+        container[i].outerHTML = '';
+        container[i] = null;
+      }
     }
   };
 
@@ -148,6 +173,7 @@ var vNotify = (function() {
     error: error,
     warning: warning,
     notify: notify,
-    options: options
+    options: options,
+    positionOption: positionOption
   };
 })();
