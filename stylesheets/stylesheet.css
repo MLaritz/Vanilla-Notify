@@ -124,12 +124,12 @@ button#info-notify:hover {
 	color: #fff;
 }
 
-button#success-notify {
+button#success-notify, button#noclose-notify {
 	border-color: #2ecc71;
 	color: #2ecc71;
 }
 
-button#success-notify:hover {
+button#success-notify:hover, button#noclose-notify:hover {
 	background: #2ecc71;
 	color: #fff;
 }
