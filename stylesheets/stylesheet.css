@@ -229,6 +229,8 @@ a.button span {
 }
 #view-on-github {
   margin-right: 0;
+	float: right;
+	margin-top: -60px;
 }
 
 code, pre {

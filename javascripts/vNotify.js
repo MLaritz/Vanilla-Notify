@@ -27,7 +27,7 @@ document.querySelector('#notify-notify').addEventListener('click', function () {
 
 
 document.querySelector('#sticky-notify').addEventListener('click', function () {
-    vNotify.error({text:'This is a sticky error notification.', title:'Error Notification.', sticky: true});
+    vNotify.error({text:'This is a sticky error notification. It won\'t close unless you click the X.', title:'Error Notification.', sticky: true});
 });
 
 document.querySelector('#noclose-notify').addEventListener('click', function () {
