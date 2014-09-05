@@ -13,14 +13,13 @@
   </head>
   <body>
       <h1>vNotify Test Page</h1>
-
       <script src="vanilla-notify.js"></script>
       <script>
-        vNotify.info('This is an info notification.', 'Info Notification.');
-        vNotify.success('This is a success notification.', 'Success Notification.');
-        vNotify.warning('This is a warning notification.', 'Warning Notification.');
-        vNotify.error('This is an error notification.', 'Error Notification.');
-        vNotify.notify('This is a notify notification.', 'Notify Notification.');
+        vNotify.info({text:'This is an info notification.', title:'Info Notification.'});
+        vNotify.success({text:'This is a success notification.', title:'Success Notification.'});
+        vNotify.warning({text:'This is a warning notification.', title:'Warning Notification.'});
+        vNotify.error({text:'This is an error notification.', title:'Error Notification.'});
+        vNotify.notify({text:'This is a notify notification.', title:'Notify Notification.'});
       </script>
   </body>
 </html>

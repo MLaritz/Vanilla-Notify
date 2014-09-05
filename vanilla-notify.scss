@@ -10,6 +10,7 @@ $vn-success-color: #fff !default;
 $vn-error-color: #fff !default;
 $vn-warning-color: #fff !default;
 $vn-notify-color: #fff !default;
+$vn-close-color: #fff !default;
 
 $vn-border-radius: 5px !default;
 $vn-container-top: 10px !default;
@@ -29,6 +30,12 @@ $vn-container-right: 10px !default;
   opacity: $vn-value;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$vn-IEValue+")";
   filter: alpha(opacity=$vn-IEValue);
+}
+
+@mixin vn-transform($vn-deg) {
+  -webkit-transform: rotate($vn-deg);
+  -moz-transform: rotate($vn-deg);
+  transform: rotate($vn-deg);
 }
 
 .vnotify-container {
@@ -53,11 +60,43 @@ $vn-container-right: 10px !default;
     bottom: $vn-container-bottom;
     left: $vn-container-left;
   }
+
+  .vn-close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    width: 10px;
+    height: 10px;
+    padding: 2px;
+    cursor: pointer;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      height: 2px;
+      background: $vn-close-color;  
+    }
+
+    &:before {
+      @include vn-transform(45deg);
+    }
+
+    &:after {
+      @include vn-transform(-45deg);
+    }
+
+    &:hover {
+      font-weight: bold;
+    }
+  }
 }
 
 .vnotify-item {
   width: 20em;
   padding: 15px;
+  position: relative;
   @include vn-border-radius($vn-border-radius);
   margin-bottom: 15px;
   @include vn-opacity(0.8);

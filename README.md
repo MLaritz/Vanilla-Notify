@@ -3,6 +3,9 @@ Vanilla Notify
 
 Notification Library built using Vanilla Javascript.  No jQuery or other dependencies.
 
+This library was built with customization in mind.  While there are global options, each
+notification can override the global options. 
+
 ##Demo
 http://mlaritz.github.io/Vanilla-Notify/
 
@@ -17,28 +20,39 @@ The JS and CSS files are required:
 ##Examples
 ```javascript
 //Info Notification
-vNotify.info('text', 'title');
+vNotify.info({text: 'text', title:'title'});
 
 //Success Notification
-vNotify.success('text', 'title');
+vNotify.success({text: 'text', title:'title'});
 
 //Warning Notification
-vNotify.warning('text', 'title');
+vNotify.warning({text: 'text', title:'title'});
 
 //Error Notification
-vNotify.error('text', 'title');
+vNotify.error({text: 'text', title:'title'});
 
 //Notify Notification
-vNotify.notify('text', 'title');
+vNotify.notify({text: 'text', title:'title'});
 ```
 
-##Options
+##Global Options
 ```javascript
 vNotify.options = {
   fadeInDuration: 2000,
   fadeOutDuration: 2000,
   fadeInterval: 50,
   visibleDuration: 5000,
-  postHoverVisibleDuration: 500
+  postHoverVisibleDuration: 500,
+  position: positionOption.topRight,
+  sticky: false,
+  showClose: false
 };
+```
+
+##Notification Options
+Each individual notification can override the global options.
+
+If you want to make an error notification sticky with the close icon:
+```javascript
+vNotify.error({text: 'text', title:'title', sticky: true, showClose: true});
 ```
