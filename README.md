@@ -4,7 +4,7 @@ Vanilla Notify
 Notification Library built using Vanilla Javascript.  No jQuery or other dependencies.
 
 This library was built with customization in mind.  While there are global options, each
-notification can override the global options. 
+notification can override the global options.
 
 ##Demo
 http://mlaritz.github.io/Vanilla-Notify/
@@ -45,7 +45,7 @@ vNotify.options = {
   postHoverVisibleDuration: 500,
   position: positionOption.topRight,
   sticky: false,
-  showClose: false
+  showClose: true 
 };
 ```
 
@@ -56,3 +56,11 @@ If you want to make an error notification sticky with the close icon:
 ```javascript
 vNotify.error({text: 'text', title:'title', sticky: true, showClose: true});
 ```
+
+###Dist Folder
+The dist folder contains:
+* JS File (vanilla-notify.js) to use for debugging purposes
+* Minified JS File (vanilla-notify.min.js) to use for your site
+* CSS file to link to directly in your HTML
+* SCSS Partial file for you to use with your other SASS stylesheets
+* LESS file for you to use with your other LESS stylesheets

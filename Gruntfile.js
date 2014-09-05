@@ -50,9 +50,13 @@ module.exports = function(grunt) {
       }
     },
     copy: {
-      main: {
+      scss: {
         src: 'vanilla-notify.scss',
         dest: 'dist/_vanilla-notify.scss'
+      },
+      js : {
+        src: 'vanilla-notify.js',
+        dest: 'dist/vanilla-notify.js'
       }
     },
     watch: {

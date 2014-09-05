@@ -76,7 +76,7 @@ $vn-container-right: 10px !default;
       width: 100%;
       top: 50%;
       height: 2px;
-      background: $vn-close-color;  
+      background: $vn-close-color;
     }
 
     &:before {
@@ -85,10 +85,6 @@ $vn-container-right: 10px !default;
 
     &:after {
       @include vn-transform(-45deg);
-    }
-
-    &:hover {
-      font-weight: bold;
     }
   }
 }
