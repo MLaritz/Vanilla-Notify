@@ -18,6 +18,9 @@
 @vn-container-left: 10px !default;
 @vn-container-right: 10px !default;
 
+@vn-opacity: .75;
+@vn-hover-opacity: 1;
+
 .vn-border-radius(@radius) {
   -webkit-border-radius: @radius;
      -moz-border-radius: @radius;
@@ -95,10 +98,10 @@
   position: relative;
   .vn-border-radius(@vn-border-radius);
   margin-bottom: 15px;
-  .vn-opacity(0.8);
+  .vn-opacity(@vn-opacity);
 
   &:hover {
-    opacity: 1;
+    opacity: @vn-hover-opacity;
   }
 }
 
