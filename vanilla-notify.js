@@ -15,7 +15,7 @@ var vNotify = (function() {
     postHoverVisibleDuration: 500,
     position: positionOption.topRight,
     sticky: false,
-    showClose: false
+    showClose: true
   };
 
   var info = function(params) {
@@ -165,8 +165,8 @@ var vNotify = (function() {
       visibleDuration: opts.visibleDuration || options.visibleDuration,
       postHoverVisibleDuration: opts.postHoverVisibleDuration || options.postHoverVisibleDuration,
       position: opts.position || options.position,
-      sticky: opts.sticky || options.sticky,
-      showClose: opts.showClose || options.showClose
+      sticky: opts.sticky != null ? opts.sticky : options.sticky,
+      showClose: opts.showClose != null ? opts.showClose : options.showClose
     };
   };
 
