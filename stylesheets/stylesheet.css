@@ -144,12 +144,12 @@ button#warning-notify:hover {
 	color: #fff;
 }
 
-button#error-notify {
+button#error-notify, button#sticky-notify {
 	border-color: #e74c3c;
 	color: #e74c3c;
 }
 
-button#error-notify:hover {
+button#error-notify:hover, button#sticky-notify:hover {
 	background: #e74c3c;
 	color: #fff;
 }

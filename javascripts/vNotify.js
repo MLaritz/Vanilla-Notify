@@ -1,26 +1,31 @@
-vNotify.info('This is an info notification.', 'Info Notification.');
-vNotify.success('This is a success notification.', 'Success Notification.');
-vNotify.warning('This is a warning notification.', 'Warning Notification.');
-vNotify.error('This is an error notification.', 'Error Notification.');
-vNotify.notify('This is a notify notification.', 'Notify Notification.');
+vNotify.info({text:'This is an info notification.', title:'Info Notification.'});
+vNotify.success({text:'This is a success notification.', title:'Success Notification.'});
+vNotify.warning({text:'This is a warning notification.', title:'Warning Notification.'});
+vNotify.error({text:'This is an error notification.', title:'Error Notification.'});
+vNotify.notify({text:'This is a notify notification.', title:'Notify Notification.'});
 
 
 document.querySelector('#info-notify').addEventListener('click', function () {
-    vNotify.info('This is an info notification.', 'Info Notification.');
+    vNotify.info({text:'This is an info notification.', title:'Info Notification.'});
 });
 
 document.querySelector('#success-notify').addEventListener('click', function () {
-    vNotify.success('This is a success notification.', 'Success Notification.');
+    vNotify.success({text:'This is a success notification.', title:'Success Notification.'});
 });
 
 document.querySelector('#warning-notify').addEventListener('click', function () {
-    vNotify.warning('This is a warning notification.', 'Warning Notification.');
+    vNotify.warning({text:'This is a warning notification.', title:'Warning Notification.'});
 });
 
 document.querySelector('#error-notify').addEventListener('click', function () {
-    vNotify.error('This is an error notification.', 'Error Notification.');
+    vNotify.error({text:'This is an error notification.', title:'Error Notification.'});
 });
 
 document.querySelector('#notify-notify').addEventListener('click', function () {
-    vNotify.notify('This is a notify notification.', 'Notify Notification.');
+    vNotify.notify({text:'This is a notify notification.', title:'Notify Notification.'});
+});
+
+
+document.querySelector('#sticky-notify').addEventListener('click', function () {
+    vNotify.error({text:'This is a sticky error notification.', title:'Error Notification.', sticky: true, showClose: true});
 });
