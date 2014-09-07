@@ -48,7 +48,7 @@ var vNotify = (function() {
   };
 
   var addNotify = function(params) {
-    if (!params.title || !params.text) {
+    if (!params.title && !params.text) {
       return null;
     }
 

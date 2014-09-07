@@ -18,6 +18,8 @@ $vn-container-bottom: 10px !default;
 $vn-container-left: 10px !default;
 $vn-container-right: 10px !default;
 
+$vn-close-size: 15px !default;
+
 $vn-opacity: .75;
 $vn-hover-opacity: 1;
 
@@ -68,8 +70,8 @@ $vn-hover-opacity: 1;
     position: absolute;
     top: 5px;
     right: 10px;
-    width: 10px;
-    height: 10px;
+    width: $vn-close-size;
+    height: $vn-close-size;
     padding: 2px;
     cursor: pointer;
 
