@@ -37,16 +37,17 @@ module.exports = function(grunt) {
         src: 'Gruntfile.js'
       },
       lib_test: {
-        src: '*.js'
+        src: "*.js"
       }
     },
-    compass: {
+    sass: {
+      options: {
+          sourceMap: true
+      },
       dist: {
-        options: {
-          sassDir: '',
-          cssDir: '<%= distFolder %>/',
-          environment: 'production'
-        }
+          files: {
+              'dist/vanilla-notify.css': 'vanilla-notify.scss'
+          }
       }
     },
     copy: {
@@ -88,10 +89,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'compass', 'copy', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'sass', 'copy', 'uglify']);
 
 };

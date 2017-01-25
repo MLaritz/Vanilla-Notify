@@ -66,6 +66,12 @@ $vn-hover-opacity: 1;
     left: $vn-container-left;
   }
 
+  &.vn-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   .vn-close {
     position: absolute;
     top: 5px;

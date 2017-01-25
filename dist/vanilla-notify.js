@@ -4,12 +4,13 @@ var vNotify = (function() {
     topLeft: 'topLeft',
     topRight: 'topRight',
     bottomLeft: 'bottomLeft',
-    bottomRight: 'bottomRight'
+    bottomRight: 'bottomRight',
+    center: 'center'
   };
 
   var options = {
-    fadeInDuration: 2000,
-    fadeOutDuration: 2000,
+    fadeInDuration: 1000,
+    fadeOutDuration: 1000,
     fadeInterval: 50,
     visibleDuration: 5000,
     postHoverVisibleDuration: 500,
@@ -94,7 +95,7 @@ var vNotify = (function() {
 
     item.addEventListener("mouseover", resetInterval);
 
-    fade('in', options.fadeInDuration, item);
+    fade('in', item.options.fadeInDuration, item);
 
     if (!item.options.sticky){
       item.addEventListener("mouseout", hideTimeout);
@@ -152,6 +153,8 @@ var vNotify = (function() {
         return 'vn-bottom-right';
       case positionOption.bottomLeft:
         return 'vn-bottom-left';
+      case positionOption.center:
+        return 'vn-center';
       default:
         return 'vn-top-right';
     }
