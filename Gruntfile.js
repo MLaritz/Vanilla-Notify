@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     uglify: {
       app: {
         src: 'vanilla-notify.js',
-        dest: '<%= distFolder %>/vanilla-notify.min.js'
+        dest: '<%= distFolder %>/vNotify.min.js'
       }
     },
     jshint: {

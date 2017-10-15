@@ -14,7 +14,7 @@ The JS and CSS files are required:
 ```html
 <link rel="stylesheet" href="dist/vanilla-notify.css" />
 
-<script src="dist/vanilla-notify.js"></script>
+<script src="dist/vNotify.js"></script>
 ```
 
 ## Examples
@@ -59,8 +59,8 @@ vNotify.error({text: 'text', title:'title', sticky: true, showClose: true});
 
 ### Dist Folder
 The dist folder contains:
-* JS File (vanilla-notify.js) to use for debugging purposes
-* Minified JS File (vanilla-notify.min.js) to use for your site
+* JS File (vNotify.js) to use for debugging purposes
+* Minified JS File (vNotify.min.js) to use for your site
 * CSS file to link to directly in your HTML
 * SCSS Partial file for you to use with your other SASS stylesheets
 * LESS file for you to use with your other LESS stylesheets

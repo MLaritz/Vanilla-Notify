@@ -1,8 +1,17 @@
 {
-  "name": "Notify",
-  "version": "0.0.2",
-  "engines": {
-    "node": ">= 0.10.0"
+  "name": "vanilla-notify",
+  "version": "0.1.3",
+  "main": "vanilla-notify.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlaritz/Vanilla-Notify.git"
+  },
+  "author": {
+    "name": "Desk Coder LLC"
+  },
+  "license": "MIT",
+  "scripts": {
+
   },
   "devDependencies": {
     "grunt": "^0.4.5",
