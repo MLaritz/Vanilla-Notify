@@ -6,10 +6,10 @@ Notification Library built using Vanilla Javascript.  No jQuery or other depende
 This library was built with customization in mind.  While there are global options, each
 notification can override the global options.
 
-##Demo
+## Demo
 http://mlaritz.github.io/Vanilla-Notify/
 
-##Installation
+## Installation
 The JS and CSS files are required:
 ```html
 <link rel="stylesheet" href="dist/vanilla-notify.css" />
@@ -17,7 +17,7 @@ The JS and CSS files are required:
 <script src="dist/vanilla-notify.js"></script>
 ```
 
-##Examples
+## Examples
 ```javascript
 //Info Notification
 vNotify.info({text: 'text', title:'title'});
@@ -35,7 +35,7 @@ vNotify.error({text: 'text', title:'title'});
 vNotify.notify({text: 'text', title:'title'});
 ```
 
-##Global Options
+## Global Options
 ```javascript
 vNotify.options = {
   fadeInDuration: 2000,
@@ -49,7 +49,7 @@ vNotify.options = {
 };
 ```
 
-##Notification Options
+## Notification Options
 Each individual notification can override the global options.
 
 If you want to make an error notification sticky with the close icon:
@@ -57,7 +57,7 @@ If you want to make an error notification sticky with the close icon:
 vNotify.error({text: 'text', title:'title', sticky: true, showClose: true});
 ```
 
-###Dist Folder
+### Dist Folder
 The dist folder contains:
 * JS File (vanilla-notify.js) to use for debugging purposes
 * Minified JS File (vanilla-notify.min.js) to use for your site
