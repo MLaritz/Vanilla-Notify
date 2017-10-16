@@ -1,4 +1,4 @@
-class VanillaNotify {
+export class VanillaNotify {
 
     constructor() {
         this.positionOption = {
@@ -47,10 +47,8 @@ class VanillaNotify {
     };
 
     custom(params) {
-        return addNotify(params);
+        return this.addNotify(params);
     };
-
-
 
     addNotify(params) {
         if (!params.title && !params.text) {
@@ -223,5 +221,3 @@ class VanillaNotify {
         }
     };
 }
-
-export default VanillaNotify;

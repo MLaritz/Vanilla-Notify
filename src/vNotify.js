@@ -135,7 +135,7 @@ var vNotify = (function() {
 
     var createNotifyContainer = function(positionClass) {
         var frag = document.createDocumentFragment();
-        container = document.createElement('div');
+        var container = document.createElement('div');
         container.classList.add('vnotify-container');
         container.classList.add(positionClass);
         container.setAttribute('role', 'alert');
@@ -199,6 +199,7 @@ var vNotify = (function() {
             if(opacity <= 0) {
                 remove(el);
                 checkRemoveContainer();
+                window.clearInterval(fading);
             }
             if((!isIn && opacity <= goal) || (isIn && opacity >= goal)) {
                 window.clearInterval(fading);
@@ -230,4 +231,4 @@ var vNotify = (function() {
         options: options,
         positionOption: positionOption
     };
-})();
+});
